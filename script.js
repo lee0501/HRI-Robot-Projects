@@ -153,7 +153,49 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- 5. Interactive Hotspot - Detail Cards Coordination ---
+    // --- 5. Lightbox for Project Card Images ---
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxClose = document.querySelector('.lightbox-close');
+    const lightboxTriggers = document.querySelectorAll('.lightbox-trigger');
+
+    if (lightbox && lightboxTriggers.length > 0) {
+        function openLightbox(src) {
+            lightboxImg.src = src;
+            lightbox.classList.add('active');
+            lightbox.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            lightbox.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+            setTimeout(() => { lightboxImg.src = ''; }, 300);
+        }
+
+        lightboxTriggers.forEach(trigger => {
+            trigger.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                openLightbox(trigger.getAttribute('data-src'));
+            });
+        });
+
+        lightboxClose.addEventListener('click', closeLightbox);
+
+        // Click the dark backdrop to close
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) closeLightbox();
+        });
+
+        // Escape key to close
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    }
+
+    // --- 6. Interactive Hotspot - Detail Cards Coordination ---
     const hotspots = document.querySelectorAll('.hotspot-dot');
     const anatomyCards = document.querySelectorAll('.anatomy-card');
 
