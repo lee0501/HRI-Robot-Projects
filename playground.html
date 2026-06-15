@@ -42,21 +42,19 @@
                 </p>
             </header>
 
-
-
-            <!-- Masonry Grid -->
+                        <!-- Masonry Grid -->
             <div class="playground-masonry fade-in" id="playground-grid">
 
                 <!-- Card 1 -->
                 <div class="playground-card" data-category="coding">
-                    <div class="playground-img-wrapper">
-                        <img src="img/playground/1-1.png" alt="Playground experiment 1">
+                    <div class="playground-img-wrapper pg-lightbox-trigger" '>
+                     <!-- data-images='["img/playground/1-1.png", "img/playground/1-2.png", "img/playground/1-3.png"] --> 
+                        <img src="img/playground/1-1.png" alt="Love Boxer">
                     </div>
                     <div class="playground-card-content">
-                        <!-- <span class="playground-card-category">Creative Coding</span> -->
                         <h3 class="playground-card-title">Love Boxer</h3>
                         <p class="playground-card-desc">
-                            Love Boxer explores the contrast between love and heartbreak. 
+                            Love Boxer explores the contrast between love and heartbreak.
                             The pink version represents confidence, happiness, and the excitement of being in love, while the gray version symbolizes vulnerability and emotional loss after a breakup.
                         </p>
                     </div>
@@ -64,11 +62,11 @@
 
                 <!-- Card 2 -->
                 <div class="playground-card" data-category="ai">
-                    <div class="playground-img-wrapper">
-                        <img src="img/playground/1-2.png" alt="Playground experiment 2">
+                     <div class="playground-img-wrapper pg-lightbox-trigger" '> 
+                     <!--data-images='["img/playground/2-1.JPG"]-->
+                        <img src="img/playground/1-2.png" alt="Three-Legged Cat">
                     </div>
                     <div class="playground-card-content">
-                        <!-- <span class="playground-card-category">AI Experiments</span> -->
                         <h3 class="playground-card-title">Three-Legged Cat</h3>
                         <p class="playground-card-desc">
                             Inspired by the Chinese idiom “three-legged cat,” a phrase describing someone with limited skills, we transformed the expression into a literal character—a cat with only three legs.
@@ -78,11 +76,11 @@
 
                 <!-- Card 3 -->
                 <div class="playground-card" data-category="physical">
-                    <div class="playground-img-wrapper">
-                        <img src="img/playground/1-3.png" alt="Playground experiment 3">
+                   <div class="playground-img-wrapper pg-lightbox-trigger" >
+                     <!--data-images='["img/playground/3-1.JPG", "img/playground/3-2.JPG", "img/playground/3-3.JPG", "img/playground/3-4.JPG", "img/playground/3-5.JPG"] -->
+                        <img src="img/playground/1-3.png" alt="Cheese Egg">
                     </div>
                     <div class="playground-card-content">
-                        <!-- <span class="playground-card-category">Physical Computing</span> -->
                         <h3 class="playground-card-title">Cheese Egg</h3>
                         <p class="playground-card-desc">
                             Cheese Egg combines the rounded form of an egg with cheese-inspired holes and colors. Fuzzy horns on its head add a playful touch, creating a whimsical character between food and fantasy.
@@ -91,13 +89,24 @@
                 </div>
 
             </div>
+
+
+            
         </div>
     </main>
+
+    <!-- Playground Lightbox -->
+    <div id="pg-lightbox" class="pg-lightbox-overlay" role="dialog" aria-modal="true" aria-hidden="true">
+        <button class="pg-lightbox-close" aria-label="Close">&#x2715;</button>
+        <img id="pg-lightbox-img" src="" alt="Full image view">
+    </div>
 
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2026 Portfolio. All rights reserved. Designed for interaction and play.</p>
+            <p>&copy; 2026 NCCU-HRI Portfolio. 
+                Designing for Human-Robot and AI Interaction.
+            </p>
         </div>
     </footer>
 

@@ -195,6 +195,46 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // --- 7. Playground Lightbox (click image → fullscreen) ---
+    const pgLightbox = document.getElementById('pg-lightbox');
+    const pgLightboxImg = document.getElementById('pg-lightbox-img');
+    const pgLightboxClose = document.querySelector('.pg-lightbox-close');
+    const pgTriggers = document.querySelectorAll('.pg-lightbox-trigger');
+
+    if (pgLightbox && pgTriggers.length > 0) {
+        function openPgLightbox(src) {
+            pgLightboxImg.src = src;
+            pgLightbox.classList.add('active');
+            pgLightbox.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closePgLightbox() {
+            pgLightbox.classList.remove('active');
+            pgLightbox.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+            setTimeout(() => { pgLightboxImg.src = ''; }, 300);
+        }
+
+        pgTriggers.forEach(trigger => {
+            trigger.addEventListener('click', () => {
+                const src = trigger.querySelector('img').src;
+                openPgLightbox(src);
+            });
+        });
+
+        pgLightboxClose.addEventListener('click', closePgLightbox);
+
+        pgLightbox.addEventListener('click', (e) => {
+            if (e.target === pgLightbox || e.target === pgLightboxImg) closePgLightbox();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (!pgLightbox.classList.contains('active')) return;
+            if (e.key === 'Escape') closePgLightbox();
+        });
+    }
+
     // --- 6. Interactive Hotspot - Detail Cards Coordination ---
     const hotspots = document.querySelectorAll('.hotspot-dot');
     const anatomyCards = document.querySelectorAll('.anatomy-card');
