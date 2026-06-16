@@ -68,89 +68,84 @@ document.addEventListener('DOMContentLoaded', () => {
     const chatbotOptions = document.getElementById('chatbot-options');
     const chatbotInput = document.getElementById('chatbot-input');
     const chatbotSend = document.getElementById('chatbot-send');
+    const POPI_URL = 'https://chatgpt.com/g/g-69edf86a70808191934c062f46678f54-popi';
 
     if (chatbotMessages) {
-        // Pre-programmed bot replies
         const replies = {
-            showtimes: "Today at Vieshow Cinemas, we have *Dune: Part Two* (IMAX 3D) playing at 18:30 and 21:15, and *Everything Everywhere All at Once* playing at 19:00! Which one would you like to see? 🎬",
-            tickets: "Booking tickets is simple! Tap on your preferred showtime, choose your seats, and scan your barcode at the door. Vieshow members also receive 10% off combo meals! 🎟️",
-            food: "We have a special 'POPI Popcorn Combo' today! 🍿 A large popcorn, two medium drinks, and a warm hot dog for only $299 (normally $420). Would you like me to reserve one?",
-            personality: "I'm POPI, a movie companion sprite inspired by cinema popcorn! 🍿 I love butter, film trivia, and helping movie lovers navigate their theater experience. Nice to meet you!"
+            showtimes: "Great question! 🎬 I can look up showtimes at VieShow Cinemas and MUVIE CINEMAS for you.\n\nTry asking me things like:\n• \"What's showing at Xinyi VieShow tonight?\"\n• \"Show me IMAX screenings this evening\"\n• \"Any movies starting after 8pm?\"\n\nJust tell me your preferred location and time — I'll find the right show for you!",
+            tickets: "Happy to help with ticketing! 🎟\n\nAt VieShow Cinemas and MUVIE CINEMAS, you can book through:\n• The official VieShow website or mobile app\n• MUVIE CINEMAS' own booking platform\n• Directly at the cinema counter on the day\n\nVieShow membership holders enjoy priority access and exclusive discounts. Student, senior, and promotional pricing are also available at select screenings.\n\nTell me your preferred cinema and showtime — I'll guide you step by step!",
+            food: "Snack time! 🍿 VieShow Cinemas and MUVIE CINEMAS offer a full range of food and beverages, including:\n\n• Classic & premium flavored popcorn\n• Combo meals with drinks\n• In-theater dining at select locations\n• Seasonal and limited-time promotions\n\nLet me know what you're in the mood for — I'll point you to the best options!",
+            personality: "Hi there! Welcome to VieShow Cinemas 🎬\n\nI'm POPI, your official assistant for VieShow Cinemas and MUVIE CINEMAS. I specialize in helping you with everything related to your movie experience.\n\nI can help you with:\n• 🎥 Movies currently showing at VieShow or MUVIE\n• 🕒 Showtimes and available screenings\n• 📍 Cinema locations and facilities\n• 🎟 Ticket prices, discounts, and booking\n• 🍿 Food, combos, and in-theater services\n\nTell me what you'd like to do — I'll guide you step by step! 🎬"
         };
 
-        // Helper function to append message bubbles
         function appendMessage(sender, text) {
             const bubble = document.createElement('div');
             bubble.className = `chat-bubble ${sender}`;
-            bubble.innerText = text;
+            bubble.textContent = text;
             chatbotMessages.appendChild(bubble);
-            
-            // Auto scroll to bottom
             chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
         }
 
-        // Helper function to simulate bot response with a small delay
         function simulateBotReply(intent) {
-            // Create a typing indicator placeholder
             const typingIndicator = document.createElement('div');
             typingIndicator.className = 'chat-bubble bot typing';
-            typingIndicator.innerText = "...";
+            typingIndicator.textContent = '...';
             chatbotMessages.appendChild(typingIndicator);
             chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
 
             setTimeout(() => {
-                // Remove typing indicator
                 typingIndicator.remove();
-                
-                const responseText = replies[intent] || "That sounds fascinating! I am still learning about that specific topic, but I can help you with showtimes, tickets, or concessions! 🍿";
+                const responseText = replies[intent] || "Thanks for your question! I only assist with VieShow Cinemas and MUVIE CINEMAS topics — movies, showtimes, tickets, food, and locations.\n\nType your question and click Send to bring it directly to POPI for a full, accurate answer! 🎬";
                 appendMessage('bot', responseText);
             }, 800);
         }
 
-        // Trigger bot responses from option buttons click
         chatbotOptions.addEventListener('click', (e) => {
             if (e.target.classList.contains('chat-option-btn')) {
-                const intent = e.target.getAttribute('data-intent');
-                const userText = e.target.innerText;
-                
-                // Add user bubble
-                appendMessage('user', userText);
-                
-                // Trigger bot reply
-                simulateBotReply(intent);
+                appendMessage('user', e.target.innerText);
+                simulateBotReply(e.target.getAttribute('data-intent'));
             }
         });
 
-        // Trigger bot responses from custom input text submission
-        function handleCustomInput() {
-            const query = chatbotInput.value.trim().toLowerCase();
-            if (!query) return;
+        function appendBotWithButton() {
+            const bubble = document.createElement('div');
+            bubble.className = 'chat-bubble bot';
 
-            // Add user bubble
-            appendMessage('user', chatbotInput.value.trim());
-            chatbotInput.value = '';
+            const msg = document.createTextNode('Love the curiosity! 🍿 I cover the VieShow essentials right here on this page — but your question deserves the full POPI treatment!\n\nPOPI is live, knowledgeable, and can\'t wait to hear from you. Go chat with POPI! 🎬✨');
+            const btn = document.createElement('a');
+            btn.href = POPI_URL;
+            btn.target = '_blank';
+            btn.rel = 'noopener noreferrer';
+            btn.className = 'chat-popi-btn';
+            btn.textContent = 'Hi POPI! →';
 
-            // Analyze query keywords to determine intent
-            let intent = 'default';
-            if (query.includes('movie') || query.includes('showtime') || query.includes('play') || query.includes('time') || query.includes('schedule')) {
-                intent = 'showtimes';
-            } else if (query.includes('ticket') || query.includes('book') || query.includes('buy') || query.includes('seat')) {
-                intent = 'tickets';
-            } else if (query.includes('popcorn') || query.includes('food') || query.includes('eat') || query.includes('drink') || query.includes('combo') || query.includes('concession')) {
-                intent = 'food';
-            } else if (query.includes('who') || query.includes('name') || query.includes('you') || query.includes('personality')) {
-                intent = 'personality';
-            }
-
-            simulateBotReply(intent);
+            bubble.appendChild(msg);
+            bubble.appendChild(document.createElement('br'));
+            bubble.appendChild(document.createElement('br'));
+            bubble.appendChild(btn);
+            chatbotMessages.appendChild(bubble);
+            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
         }
 
-        chatbotSend.addEventListener('click', handleCustomInput);
-        chatbotInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                handleCustomInput();
-            }
+        chatbotSend.addEventListener('click', () => {
+            const text = chatbotInput.value.trim();
+            if (!text) return;
+            appendMessage('user', text);
+            chatbotInput.value = '';
+
+            const typingIndicator = document.createElement('div');
+            typingIndicator.className = 'chat-bubble bot typing';
+            typingIndicator.textContent = '...';
+            chatbotMessages.appendChild(typingIndicator);
+            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+
+            setTimeout(() => {
+                typingIndicator.remove();
+                appendBotWithButton();
+            }, 800);
         });
+
+        // Enter key does NOT submit — only the Send button does
     }
 
     // --- 5. Lightbox for Project Card Images ---

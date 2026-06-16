@@ -1276,6 +1276,7 @@ a {
     align-self: flex-start;
     border: 1px solid var(--border-color);
     border-top-left-radius: 2px;
+    white-space: pre-wrap;
 }
 
 .chat-bubble.user {
@@ -1283,6 +1284,23 @@ a {
     color: var(--bg-color);
     align-self: flex-end;
     border-top-right-radius: 2px;
+}
+
+.chat-popi-btn {
+    display: inline-block;
+    margin-top: 0.25rem;
+    padding: 0.45rem 1.1rem;
+    background-color: var(--accent-color);
+    color: #fff;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: opacity 0.2s;
+}
+
+.chat-popi-btn:hover {
+    opacity: 0.85;
 }
 
 .chatbot-options {
@@ -2350,6 +2368,30 @@ Body: top 78%, left 50%
 
 .img-lightbox-close:hover {
     background: rgba(255, 255, 255, 0.3);
+}
+
+/* POPI Toast Notification */
+.popi-toast {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(1rem);
+    background: var(--text-primary);
+    color: var(--bg-color);
+    padding: 0.85rem 1.5rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-family: var(--font-sans);
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    z-index: 9999;
+    pointer-events: none;
+}
+
+.popi-toast.visible {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
 }
 
 
