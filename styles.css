@@ -999,7 +999,7 @@ a {
 }
 
 .reflection-full {
-    max-width: 860px;
+    width: 100%;
 }
 
 .reflection-column h2 {
