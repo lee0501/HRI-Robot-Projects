@@ -685,6 +685,18 @@ a {
     margin-top: 0.75rem;
 }
 
+/* Concept section — stacked layout (photos then text) */
+.concept-photos-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin: 2rem 0 3rem;
+}
+
+.concept-text-block {
+    width: 100%;
+}
+
 /* 4. Design Process (Timeline Layout) */
 .process-section {
     padding: 8rem 0;
@@ -984,6 +996,10 @@ a {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 6rem;
+}
+
+.reflection-full {
+    max-width: 860px;
 }
 
 .reflection-column h2 {
@@ -1569,8 +1585,17 @@ footer p {
         grid-template-columns: repeat(2, 1fr);
         gap: 3rem 2rem;
     }
+    .features-grid.four-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .concept-photos-row {
+        grid-template-columns: repeat(2, 1fr);
+    }
     .playground-masonry, .masonry-gallery {
         column-count: 2;
+    }
+    .problem-image-wrapper {
+        width: 50%;
     }
 }
 
@@ -1646,6 +1671,27 @@ footer p {
 
     .concept-visuals {
         grid-template-columns: 1fr;
+    }
+
+    .concept-photos-row {
+        grid-template-columns: 1fr;
+    }
+
+    .concept-text-block {
+        width: 100%;
+    }
+
+    .reflection-img-row {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .chatbot-container {
+        height: min(550px, 70vh);
+    }
+
+    .pg-lightbox-overlay {
+        padding: 1.5rem;
     }
 
     .timeline::before {
@@ -1844,10 +1890,10 @@ Body: top 78%, left 50%
     background-color: #ffffff;
     border: 1px solid var(--border-color);
     border-radius: 10px;
-    padding: 2rem;
+    overflow: hidden;
     display: flex;
-    align-items: center;
-    gap: 2.5rem;
+    flex-direction: row;
+    align-items: flex-start;
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -1859,11 +1905,9 @@ Body: top 78%, left 50%
 
 .problem-image-wrapper {
     flex-shrink: 0;
-    width: 140px;
-    height: 110px;
+    width: 45%;
+    aspect-ratio: 16 / 9;
     overflow: hidden;
-    border-radius: 8px;
-    border: 1px solid var(--border-color);
     background-color: var(--bg-color);
 }
 
@@ -1883,6 +1927,7 @@ Body: top 78%, left 50%
 
 .problem-content {
     flex-grow: 1;
+    padding: 1.5rem 2rem 2rem;
 }
 
 .problem-content .problem-num {
