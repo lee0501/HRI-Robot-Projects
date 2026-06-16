@@ -160,9 +160,14 @@
                     <img src="img/DP2/1-1.png" alt="POPI System Design Flowchart">
                 </div>
                 <div class="system-content fade-in">
-                    <p>To ensure users receive accurate, up-to-date details, POPI is connected directly to VIESHOW's official database through API integration. <br>
+                    <br>
+                    <p>
+                        To ensure users receive accurate, up-to-date details, POPI is connected directly to VIESHOW's official database through API integration.
+                    </p>
+                    
+                    <p>
                         Instead of relying on static, predefined responses, the chatbot retrieves information dynamically in real time. This technical architecture enables POPI to fetch current movie schedules, fluctuating seat availability, cinema locations, and active promotions with precision, ensuring that the conversational experience is always reliable and contextually relevant.</p>
-
+                    </p>
                     <!-- <div class="system-layer">
                         <h4>01 / Natural Language Parser (NLP)</h4>
                         <p>Analyses user messages to extract specific parameters—such as movie titles, format classes
@@ -237,14 +242,19 @@
                 <!-- Problem 1 -->
                 <div class="problem-card fade-in">
                     <div class="problem-image-wrapper">
-                        <img src="img/DP2/截圖 2026-06-05 11.18.29.png" alt="Dialogue Tree Loop Problem">
+                        <img src="img/DP2/popi.PNG" alt="Dialogue Tree Loop Problem">
                     </div>
                     <div class="problem-content">
                         <span class="problem-num">Problem 01</span>
-                        <h3 class="serif-font">Dialogue Tree Loops &amp; Fallback Rules</h3>
-                        <p>During user testing, users easily got stuck in endless loops when typing ambiguous commands.
-                            We resolved this by implementing a global fallback intent handler and adding persistent,
-                            context-aware quick-reply buttons to easily reset the flow.</p>
+                        <h3 class="serif-font"><b>Constraining LLM Versatility for Service Focus</b></h3>
+                        <p>
+                            Due to LLM’s vast general knowledge, they naturally tend to answer any query. 
+                            Early testing revealed that without precise prompts, this versatility allowed the chatbot to address out-of-scope questions, drifting away from VIESHOW’s core service. 
+                        </p>
+                        <br>
+                        <p>   
+                            To resolve this, we implemented strict behavioral guardrails within the system instructions, confining POPI’s scope to cinema-related topics through polite, on-brand redirections.
+                        </p>
                     </div>
                 </div>
 
@@ -255,10 +265,14 @@
                     </div>
                     <div class="problem-content">
                         <span class="problem-num">Problem 02</span>
-                        <h3 class="serif-font">Playful Mascots vs. Transactional Efficiency</h3>
-                        <p>Early iterations of POPI were overly conversational, creating chat fatigue for users just
-                            wanting to buy tickets quickly. We iterated by pruning conversation dialogue lengths and
-                            using card UI elements for showtime selection instead of purely text-based listings.</p>
+                        <h3 class="serif-font"><b>Balancing Constraints with Persona Alignment</b></h3>
+                        <p>
+                            As system prompts became more complex to enforce boundaries, POPI began losing its personality, resulting in robotic responses that compromised the UX. 
+                        </p>
+                        <br>
+                        <p>
+                            We resolved this by restructuring the prompt hierarchy, separating behavioral constraints from persona guidelines to ensure POPI remains secure while maintaining its enthusiastic, friendly tone.
+                        </p>
                     </div>
                 </div>
 
@@ -287,18 +301,23 @@
                 <div class="reflection-column fade-in">
                     <span class="section-label" style="font-size: 16px;">Refection</span>
                     <h2 class="serif-font">Key Takeaways</h2>
-                    <p>Designing digital services around AI chatbots often risks turning helpful dialogue into standard
-                        decision trees. POPI demonstrates that injecting playful characteristics increases patience,
-                        makes UI layouts feel organic, and leads to greater user satisfaction.</p>
+                    <p>
+                        Developing POPI highlighted the delicate balance between systemic accuracy and character personality. 
+                        Initially, we prioritized reliability through strict conversational rules, which minimized errors but resulted in rigid, robotic interactions.
+                        This challenge led to a pivotal realization: a chatbot is a living service touchpoint, not just an information retrieval tool. 
+                        Users do not simply seek answers; building a connection between the user and the brand is equally essential. 
+                        Through this project, we learned that exceptional conversational UX requires looking beyond pure system logic to design for human emotion, and seamlessly weaving service into a narrative that feels natural, engaging, and fundamentally trustworthy.
+
+                    </p>
                 </div>
-                <div class="reflection-column fade-in">
+                <!-- <div class="reflection-column fade-in">
                     <div class="reflection-block">
                         <h3 class="serif-font">Design Insights</h3>
                         <p>User testing revealed that users are much more willing to explore cinema products (like
                             premium snacks or VIP seats) when the prompt is presented by a mascot in a friendly,
                             conversational way, rather than via static check-boxes.</p>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </section>
