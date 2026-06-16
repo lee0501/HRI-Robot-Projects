@@ -1198,7 +1198,7 @@ a {
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    height: 550px;
+    height: 720px;
     box-shadow: 0 10px 40px rgba(0,0,0,0.03);
 }
 
@@ -1706,7 +1706,7 @@ footer p {
     }
 
     .chatbot-container {
-        height: min(550px, 70vh);
+        height: min(720px, 75vh);
     }
 
     .pg-lightbox-overlay {
