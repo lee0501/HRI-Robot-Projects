@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>POPI — Cinema AI Chatbot Design</title>
     <meta name="description"
-        content="POPI is an AI-powered cinema chatbot for Vieshow Cinemas designed as a friendly popcorn mascot to guide users through movie schedules, tickets, and services.">
+        content="POPI is an AI-powered cinema chatbot for Vieshow Cinemas designed as a friendly <b> popcorn</b> mascot to guide users through movie schedules, tickets, and services.">
     <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -50,19 +50,19 @@
             <div class="overview-grid">
                 <div class="overview-visual fade-in">
                     <img src="img/DP2/vieshow.jpg" alt="POPI Mascot Design"
-                        style="background-color: #fcfbfa; padding: 2rem;">
+                        class="img-zoomable" style="background-color: #fcfbfa; padding: 2rem;">
                 </div>
                 <div class="overview-details fade-in">
                     <h2 class="serif-font">Overview</h2>
                     <p>
-                        POPI is an interactive cinema service chatbot designed for <b>VIESHOW Cinemas</b>. By combining a distinct character persona with conversational assistance, POPI delivers an engaging customer support experience. Through real-time cinema information and friendly guidance, the chatbot helps users seamlessly navigate their entire moviegoing journey — from discovering showtimes to exploring in-theater amenities.
+                        POPI is an <b>interactive cinema service chatbot</b> designed for <b>VIESHOW Cinemas</b>. By combining a <b>character persona with conversational assistance</b>, POPI delivers an engaging customer support experience. Through real-time cinema information and friendly guidance, the chatbot helps users <b>seamlessly navigate their entire moviegoing journey</b> — from discovering showtimes to exploring in-theater amenities.
                     </p>
 
                     <div class="overview-meta-item">
                         <span class="overview-meta-label" style="font-size: 16px;">Background</span>
                         <div class="overview-meta-value">
                             <p>
-                            Moviegoers frequently seek immediate information regarding showtimes, screening formats, ticketing policies, and theater services. However, traditional cinema websites often require users to navigate through multiple dense pages to find simple answers. Using VIESHOW Cinemas as our project context, we explored how a conversational interface could streamline information access, while seeking ways to combine functionality with emotional design to deliver a better user experience.</div>
+                            Moviegoers frequently seek immediate information regarding showtimes, screening formats, ticketing policies, and theater services. However, traditional cinema websites often require users to navigate through multiple dense pages to find simple answers. Using VIESHOW Cinemas as our project context, we explored <b>how a conversational interface could streamline information access</b>, while seeking ways to <b>combine functionality with emotional design</b> to deliver a better user experience.</div>
                             </p>
                     </div>
                     <!-- <div class="overview-meta-item">
@@ -82,7 +82,7 @@
                 <div class="concept-text fade-in">
                     <span class="section-label" style="font-size: 16px;">Concept</span>
                     <h2 class="serif-font">A Friendly Movie Companion</h2>
-                    <p>The chatbot character is inspired by the most iconic symbol of the moviegoing experience — popcorn. By transforming this familiar cinema symbol into a friendly mascot, POPI establishes an immediate connection with users.</p>
+                    <p>The chatbot character is inspired by the most iconic symbol of the moviegoing experience — <b>popcorn</b>. By transforming this familiar cinema symbol into a friendly mascot, POPI establishes an immediate connection with users.</p>
                     <p>To reinforce its identity, POPI was developed with a clear character persona:</p>
                     <ul class="reflection-list" style="margin-top: 1.5rem;">
                         <li><strong>Role:</strong> Movie Sprite</li>
@@ -92,7 +92,7 @@
                 </div>
                 <div class="fade-in" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
                     <img src="img/DP2/2-1.jpg" alt="POPI popcorn illustration"
-                        style="max-height: 420px; width: auto; max-width: 100%; display: block;">
+                        class="img-zoomable" style="max-height: 420px; width: auto; max-width: 100%; display: block;">
                     <div class="concept-visual-caption" style="text-align: center; margin-top: 0.75rem;">POPI: Popcorn-inspired movie sprite design study</div>
                 </div>
             </div>
@@ -162,12 +162,12 @@
                 <div class="system-content fade-in">
                     <br>
                     <p>
-                        To achieve an intelligent and responsive experience, POPI was developed using OpenAI’s My GPTs framework, leveraging its configuration cap
+                        To achieve an intelligent and responsive experience, POPI was developed using <b>OpenAI’s My GPTs framework</b>, leveraging its configuration capabilities to transform a general language model into a specialized cinema assistant.
                     </p>
                     
                     <p>
-                       Instead of relying on static, predefined answers, the chatbot's architecture utilizes custom GPT Actions to connect directly with VIESHOW’s official database via API integration. 
-                       This setup enables POPI to fetch real-time, dynamic information—including fluid showtimes, live seat availability, and active promotions—ensuring that every conversational interaction is both contextually relevant and highly precise.
+                       Instead of relying on static, predefined answers, the chatbot's architecture utilizes custom GPT Actions to <b>connect directly with VIESHOW’s official database via API integration</b>. 
+                       This setup enables POPI to <b>fetch real-time, dynamic information</b>—including fluid showtimes, live seat availability, and active promotions—ensuring that every conversational interaction is both contextually relevant and highly precise.
                     </p>
                     <!-- <div class="system-layer">
                         <h4>01 / Natural Language Parser (NLP)</h4>
@@ -241,56 +241,20 @@
 
             <div class="problems-grid">
                 <!-- Problem 1 -->
-                <div class="problem-card fade-in">
-                    <div class="problem-image-wrapper">
-                        <img src="img/DP2/popi.PNG" alt="Dialogue Tree Loop Problem">
-                    </div>
-                    <div class="problem-content">
-                        <span class="problem-num">Problem 01</span>
-                        <h3 class="serif-font"><b>Constraining LLM Versatility for Service Focus</b></h3>
-                        <p>
-                            Due to LLM’s vast general knowledge, they naturally tend to answer any query. 
-                            Early testing revealed that without precise prompts, this versatility allowed the chatbot to address out-of-scope questions, drifting away from VIESHOW’s core service. 
-                        </p>
-                        <br>
-                        <p>   
-                            To resolve this, we implemented strict behavioral guardrails within the system instructions, confining POPI’s scope to cinema-related topics through polite, on-brand redirections.
-                        </p>
-                    </div>
+                <div class="problem-card problem-text-only fade-in">
+                    <span class="problem-num">Problem 01</span>
+                    <h3 class="serif-font"><b>Constraining LLM Versatility for Service Focus</b></h3>
+                    <p>Due to <b>LLM’s vast general knowledge</b>, they naturally tend to answer any query. Early testing revealed that without precise prompts, this versatility allowed the chatbot to <b>address out-of-scope questions, drifting away from VIESHOW’s core service</b>.</p>
+                    <p>To resolve this, we implemented <b>strict behavioral guardrails</b> within the system instructions, <b>confining POPI’s scope to cinema-related topics</b> through polite, on-brand redirections.</p>
                 </div>
 
                 <!-- Problem 2 -->
-                <div class="problem-card fade-in">
-                    <div class="problem-image-wrapper">
-                        <img src="img/DP2/popi.PNG" alt="Mascot Personality Efficiency Balance">
-                    </div>
-                    <div class="problem-content">
-                        <span class="problem-num">Problem 02</span>
-                        <h3 class="serif-font"><b>Balancing Constraints with Persona Alignment</b></h3>
-                        <p>
-                            As system prompts became more complex to enforce boundaries, POPI began losing its personality, resulting in robotic responses that compromised the UX. 
-                        </p>
-                        <br>
-                        <p>
-                            We resolved this by restructuring the prompt hierarchy, separating behavioral constraints from persona guidelines to ensure POPI remains secure while maintaining its enthusiastic, friendly tone.
-                        </p>
-                    </div>
+                <div class="problem-card problem-text-only fade-in">
+                    <span class="problem-num">Problem 02</span>
+                    <h3 class="serif-font"><b>Balancing Constraints with Persona Alignment</b></h3>
+                    <p>As system prompts became more complex to enforce boundaries, POPI began <b>losing its personality, resulting in robotic responses</b> that compromised the UX.</p>
+                    <p>We resolved this by <b>restructuring the prompt hierarchy</b>, separating behavioral constraints from persona guidelines to ensure POPI remains secure while <b>maintaining its enthusiastic, friendly tone</b>.</p>
                 </div>
-
-                <!-- Problem 3
-                <div class="problem-card fade-in">
-                    <div class="problem-image-wrapper">
-                        <img src="img/DP2/vieshow.jpg" alt="Concession Booking Overload">
-                    </div>
-                    <div class="problem-content">
-                        <span class="problem-num">Problem 03</span>
-                        <h3 class="serif-font">Cognitive Overload in Concession Ordering</h3>
-                        <p>Combining film selection, seat booking, and popcorn ordering in a single thread overwhelmed
-                            users. Through user journey testing, we restructured the booking path, deferring concessions
-                            ordering to a post-ticket confirmation upsell stage.
-                        </p>
-                    </div>
-                </div> -->
             </div>
         </div>
     </section>
@@ -301,11 +265,11 @@
             <div class="reflection-full fade-in">
                 <span class="section-label" style="font-size: 16px;">Refection</span>
                 <p>
-                    Developing POPI highlighted the delicate balance between systemic accuracy and character personality.
+                    Developing POPI highlighted <b>the delicate balance between systemic accuracy and character personality</b>.
                     Initially, we prioritized reliability through strict conversational rules, which minimized errors but resulted in rigid, robotic interactions.
-                    This challenge led to a pivotal realization: a chatbot is a living service touchpoint, not just an information retrieval tool.
-                    Users do not simply seek answers; building a connection between the user and the brand is equally essential.
-                    Through this project, we learned that exceptional conversational UX requires looking beyond pure system logic to design for human emotion, and seamlessly weaving service into a narrative that feels natural, engaging, and fundamentally trustworthy.
+                    This challenge led to a pivotal realization: <b>a chatbot is a living service touchpoint</b>, not just an information retrieval tool.
+                    Users do not simply seek answers; <b>building a connection between the user and the brand is equally essential</b>.
+                    Through this project, we learned that exceptional conversational UX requires <b>looking beyond pure system logic to design for human emotion</b>, and seamlessly weaving service into a narrative that feels natural, engaging, and fundamentally trustworthy.
                 </p>
             </div>
         </div>

@@ -235,6 +235,46 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // --- 8. Universal Image Lightbox ---
+    const imgLightbox = document.createElement('div');
+    imgLightbox.className = 'img-lightbox-overlay';
+    imgLightbox.setAttribute('role', 'dialog');
+    imgLightbox.setAttribute('aria-modal', 'true');
+    imgLightbox.setAttribute('aria-hidden', 'true');
+    imgLightbox.innerHTML = '<button class="img-lightbox-close" aria-label="Close">&times;</button><img src="" alt="">';
+    document.body.appendChild(imgLightbox);
+
+    const imgLbImg = imgLightbox.querySelector('img');
+    const imgLbClose = imgLightbox.querySelector('.img-lightbox-close');
+
+    function openImgLb(src, alt) {
+        imgLbImg.src = src;
+        imgLbImg.alt = alt || '';
+        imgLightbox.classList.add('active');
+        imgLightbox.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+    function closeImgLb() {
+        imgLightbox.classList.remove('active');
+        imgLightbox.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        setTimeout(() => { imgLbImg.src = ''; }, 300);
+    }
+
+    document.querySelectorAll('.img-zoomable').forEach(img => {
+        img.style.cursor = 'zoom-in';
+        img.addEventListener('click', () => openImgLb(img.src, img.alt));
+    });
+
+    imgLbClose.addEventListener('click', closeImgLb);
+    imgLightbox.addEventListener('click', e => {
+        if (e.target === imgLightbox) closeImgLb();
+    });
+    document.addEventListener('keydown', e => {
+        if (!imgLightbox.classList.contains('active')) return;
+        if (e.key === 'Escape') closeImgLb();
+    });
+
     // --- 6. Interactive Hotspot - Detail Cards Coordination ---
     const hotspots = document.querySelectorAll('.hotspot-dot');
     const anatomyCards = document.querySelectorAll('.anatomy-card');
