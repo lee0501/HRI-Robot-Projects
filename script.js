@@ -270,6 +270,67 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.key === 'Escape') closeImgLb();
     });
 
+    // --- 9. Bella Bot Carousel Lightbox ---
+    const bellaLightbox = document.getElementById('bella-lightbox');
+    if (bellaLightbox) {
+        const bellaLbImg = document.getElementById('bella-lightbox-img');
+        const bellaLbClose = bellaLightbox.querySelector('.bella-lightbox-close');
+        const bellaLbPrev = bellaLightbox.querySelector('.bella-lightbox-prev');
+        const bellaLbNext = bellaLightbox.querySelector('.bella-lightbox-next');
+        const bellaLbCounter = document.getElementById('bella-lightbox-counter');
+        const bellaGridItems = document.querySelectorAll('.bella-grid-item');
+
+        const bellaImageData = Array.from(bellaGridItems).map(item => ({
+            src: item.querySelector('img').src,
+            alt: item.querySelector('img').alt
+        }));
+
+        let bellaCurrentIndex = 0;
+
+        function openBellaLb(index) {
+            bellaCurrentIndex = index;
+            bellaLbImg.src = bellaImageData[index].src;
+            bellaLbImg.alt = bellaImageData[index].alt;
+            bellaLbCounter.textContent = `${index + 1} / ${bellaImageData.length}`;
+            bellaLightbox.classList.add('active');
+            bellaLightbox.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeBellaLb() {
+            bellaLightbox.classList.remove('active');
+            bellaLightbox.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+            setTimeout(() => { bellaLbImg.src = ''; }, 300);
+        }
+
+        function navigateBella(direction) {
+            bellaCurrentIndex = (bellaCurrentIndex + direction + bellaImageData.length) % bellaImageData.length;
+            bellaLbImg.src = bellaImageData[bellaCurrentIndex].src;
+            bellaLbImg.alt = bellaImageData[bellaCurrentIndex].alt;
+            bellaLbCounter.textContent = `${bellaCurrentIndex + 1} / ${bellaImageData.length}`;
+        }
+
+        bellaGridItems.forEach((item, index) => {
+            item.addEventListener('click', () => openBellaLb(index));
+        });
+
+        bellaLbClose.addEventListener('click', closeBellaLb);
+        bellaLbPrev.addEventListener('click', () => navigateBella(-1));
+        bellaLbNext.addEventListener('click', () => navigateBella(1));
+
+        bellaLightbox.addEventListener('click', e => {
+            if (e.target === bellaLightbox) closeBellaLb();
+        });
+
+        document.addEventListener('keydown', e => {
+            if (!bellaLightbox.classList.contains('active')) return;
+            if (e.key === 'Escape') closeBellaLb();
+            if (e.key === 'ArrowLeft') navigateBella(-1);
+            if (e.key === 'ArrowRight') navigateBella(1);
+        });
+    }
+
     // --- 6. Interactive Hotspot - Detail Cards Coordination ---
     const hotspots = document.querySelectorAll('.hotspot-dot');
     const anatomyCards = document.querySelectorAll('.anatomy-card');
