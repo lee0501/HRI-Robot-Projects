@@ -1,5 +1,7 @@
 # NCCU-HRI Portfolio
 
+**Live site: https://lee0501.github.io/HRI-Robot-Projects/**
+
 A static portfolio website documenting three Human-Robot Interaction (HRI) and Human-AI Interaction (HAI) design projects produced for the course *Designing Human-Robot Interaction and Human-AI Interaction* at National Chengchi University (NCCU).
 
 ---
